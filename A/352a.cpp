@@ -16,7 +16,11 @@ int main()
             ++b;
         }
     }
-    if(b<9 || a<1){
+    if(a<1){
+        cout << "-1";
+        exit(0);
+    }
+    if(b<9 ){
         cout << 0;
         exit(0);
     }
