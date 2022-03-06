@@ -2,9 +2,9 @@
 using namespace std;
 int isLucky(string n)
 {
-    int x = stoi(n);
-    for (int i = 0; i < x.length();i++){
-        if(x[i]=='4' || x[i]=='7'){
+   // int x = stoi(n);
+    for (int i = 0; i < n.length();i++){
+        if(n[i]=='4' || n[i]=='7'){
 
         }
         else{
@@ -13,9 +13,7 @@ int isLucky(string n)
     }
     return 1;
 }
-vector<int> generateLucky(){
-    
-}
+
 int main(){
     string s;
     cin >> s;
@@ -25,6 +23,26 @@ int main(){
     }
     else{
         int flag = 0;
+        int n = stoi(s);
 
+        for (int i = 1; i  <= n; i++)
+        {
+           
+            if(n%i==0){
+                 cout<<i<<" ";
+                flag=isLucky(to_string(i));
+            if(flag){
+                break;
+            }
+            }
+            
+        }
+        if(flag){
+            cout << "YES";
+        }
+        else{
+            cout << "NO";
+        }
     }
+    return 0;
 }
