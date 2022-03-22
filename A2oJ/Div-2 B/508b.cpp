@@ -2,50 +2,62 @@
 using namespace std;
 int main(){
 
-    int n;
-    cin >> n;
-    int temp = n;
-    vector<int> v;
+    string s;
+    cin >> s;
+    int n = s.length();
     int countEven = 0;
-    while (temp > 0)
-    {
-        v.push_back(temp % 10);
-        if((temp%10)%2==0){
+
+    for (int i = 0; i < n;i++){
+        int t = s[i] - '0';
+        //cout << t << " ";
+        if (t % 2 == 0)
+        {
             ++countEven;
         }
-        temp = temp / 10;
     }
-    //sort(v.begin(), v.end());
+    // cout << endl;
     if (countEven == 0)
     {
         cout << "-1";
         return 0;
+        }
+    int index=-1;
+    
+    int tmp = s[n - 1]-'0';
+    for (int i = n - 2; i >= 0; i--)
+    {
+        int element = s[i] - '0';
+        if (element % 2 == 0)
+        {
+            if(tmp>element){
+                index = i;
+            }
+        }
     }
-    reverse(v.begin(), v.end());
-    int index1,index2;
-    for (int i = v.size()-1; i >=0;i--){
-        if(v[i]%2==0){
-            index1 = i;
+    if(index!=-1){
+        swap(s[index], s[n - 1]);
+        for (int i = 0; i < n; i++)
+        {
+            cout << s[i];
+        }
+        cout << endl;
+        return 0;
+    }
+    for (int i = n - 2; i >= 0; i--)
+    {
+        int element = s[i] - '0';
+        if(element%2==0){
+            index = i;
             break;
         }
     }
-    for (int i =0; i <n;i++){
-        if(v[i]%2==0){
-            index2 = i;
-            break;
+     swap(s[index], s[n - 1]);
+    for (int i = 0; i < n; i++)
+        {
+            cout << s[i];
         }
-    }
-    int index;
-    if(v[index1]<v[index2]){
-        index = index1;
-    }
-    else{
-        index = index2;
-    }
-        swap(v[index], v[v.size()-1]);
+        cout << endl;
 
-    for (int i = 0; i < v.size();i++){
-        cout << v[i];
-    }
+    
         return 0;
 }
