@@ -11,34 +11,35 @@ using namespace std;
 #define print1(a)       for(auto x:a)cout<<x.F<<" "<<x.S<<endl
 #define all(p)          p.begin(),p.end()
 void solve(){
-    int n;
-    cin >> n;
-    vector<int> v(n);
-    for (int i = 0; i < n;i++){
-        cin >> v[i];
-    }
-    int m;
-    cin >> m;
-    vector<int> dp(n);
-    dp[0] = v[0];
-    for (int i = 1; i < n; i++)
-    {
-        dp[i] = max(dp[i - 1], v[i]);
-    }
+    int n,m;
+        cin >> n>>m;
+        vector<int> v(m);
+        set<int> s;
         for (int i = 0; i < m; i++)
         {
-            int w, h;
-            cin >> w >> h;
-            --w;
-            int ans = max(dp[0], dp[w]);
-            if(w!=0){
-            dp[w] = ans + h;
-            dp[0] = ans + h;
-            }else{
-                dp[0] += h;
+            cin >> v[i];
+            s.insert(v[i]);
+        }
+        int flag = 1;
+        if(s.find(1)!=s.end() || s.find(n)!=s.end()){
+            flag = 0;
+        }
+        if(flag==0){
+            cout << "NO" << endl;
+            return;
+        }
+        sort(v.begin(), v.end());
+        for (int i = 0; i < m - 2;i++){
+            if(v[i+1]-v[i]==1 && v[i+2]-v[i]==2){
+                flag = 0;
+                break;
             }
-
-            cout << ans << endl;
+        }
+        if(flag){
+            cout << "YES" << endl;
+        }
+        else{
+            cout << "NO" << endl;
         }
 }
 int32_t main(){

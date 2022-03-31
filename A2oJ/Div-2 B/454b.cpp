@@ -23,11 +23,13 @@ int main(){
         reverse(t.begin(), t.end());
         // int count = 0;
         int first = t[0];// first element in the sorted array
+        int last=t[n-1];
         while (1)
         {
-            
+            if(count>n)break;
             int p = q.front();
-            if(first==p){
+            int r=q.back();
+            if(first==p && r==last){
                 break;
             }
             q.pop();

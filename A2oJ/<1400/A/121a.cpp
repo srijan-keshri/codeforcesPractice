@@ -28,16 +28,42 @@ void solve(){
     vector<int> v;
    
         rec(0,v);
-    //print(v);
-    int sum = 0;
-    sort(v.begin(),v.end());
-    for (int i = l; i <= r; i++)
-    {
-        int temp= *lower_bound(v.begin(), v.end(), i);
-        // cout<<temp<<endl;
-        sum+=temp;
-    }
-    cout << sum;
+        int n = v.size();
+        // print(v);
+        int sum = 0;
+        sort(v.begin(), v.end());
+
+        // 4-2+1
+        int i;
+        int ff = 0;
+        for (i = 0; i < n; i++)
+        {
+            if (v[i] > l)
+            {
+                sum += (v[i] * (v[i] - l + 1));
+                break;
+            }
+            cout << i << endl;
+        }
+        cout << sum << endl;
+        for (i; i < v.size(); i++)
+        {
+
+            if(ff)
+                break;
+            else if (v[i] > r && ff == 0)
+            {
+                ff = 1;
+                sum += (v[i] * (v[i] - v[i - 1]));
+                break;
+            }
+            else
+            {
+                sum += v[i] * (v[i] - v[i - 1]);
+                
+            }
+        }
+        cout << sum << endl;
 }
 
 int32_t main(){

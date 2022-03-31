@@ -4,11 +4,13 @@ int main(){
     #define int long long int
     int r, x, y, a, b;
     cin >> r >> x >> y >> a >> b;
-    int tempx, tempy;
-    tempx = abs(a - x) / r;
-    tempy = abs(b - y) / r;
-    int step = max(tempx, tempy);
-    cout << step - 1;
+    int rr = pow(b-y, 2) + pow(a-x, 2);
+
+    float step = (float)sqrt(rr);
+    
+    cout<<ceil(step/((2.0)*r))<<endl;    
+
 
     return 0;
 }
+
